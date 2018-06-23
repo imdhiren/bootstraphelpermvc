@@ -1,0 +1,40 @@
+﻿@using BootStrapHelpers.Web.HtmlHelpers.BootStrap
+@model BootStrapHelpers.Web.Models.MainViewModel
+
+@using BootStrapHelpers.Web.HtmlHelpers.BootStrap.ViewModels
+
+@{
+    ViewBag.Title = "Index";
+}
+    <h1>Breadcrumbs</h1>
+    @Html.Breadcrumbs(new List<TbMenuItem>()
+                {
+                    new TbMenuItem() { Text = "testing", RouteValues = new {@controller = "Test", @action="Index"}, Attributes = new {@data_target="modal"}
+                }})
+    <br />
+    <h1>ButtonDropdowns</h1>
+    @Html.ButtonDropdowns("Test", new List<TbMenuItem>()
+                {
+                    new TbMenuItem() { Text = "testing", RouteValues = new {@controller = "Test", @action="Index"}, Attributes = new {@data_target="modal"}},
+                    null
+                }, new {@downgrade = true})
+    <br />
+    <h1>TextBoxRowFor</h1>
+    @Html.TextBoxRowFor(x => x.LoginViewModels.UserName, new { @Placeholder = "Enter User Name" })
+    @Html.PasswordRowFor(x => x.LoginViewModels.Password, new { placeholder = "Enter Password" })
+    <br />
+    <h1>DatePicker</h1>
+    @Html.DatepickerRowFor(m => m.DateViewModel.Date1, new { @data_date_format = "dd-mm-yyyy" })
+    @Html.DatepickerRowFor(m => m.DateViewModel.Date2, new { @data_date_format = "dd-mm-yyyy" })
+    @section Scripts
+{
+        <script>
+            $(function () {
+                $('.date').datepicker();
+            });
+
+        </script>
+    }
+
+
+
